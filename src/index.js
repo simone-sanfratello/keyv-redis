@@ -19,7 +19,7 @@ class KeyvRedis extends EventEmitter {
 
 		const client = redis.createClient(opts);
 
-		this.redis = ['get', 'set', 'sadd', 'del', 'srem', 'smembers'].reduce((obj, method) => {
+		this.redis = ['get', 'set', 'sadd', 'del', 'srem', 'smembers', 'quit'].reduce((obj, method) => {
 			obj[method] = pify(client[method].bind(client));
 			return obj;
 		}, {});
